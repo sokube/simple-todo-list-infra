@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/sokube/simple-todo-list.git
+    repoURL: https://github.com/sokube/simple-todo-list-infra.git
     targetRevision: dev
-    path: argocd/app
+    path: app
     directory:
       recurse: true
   destination:
