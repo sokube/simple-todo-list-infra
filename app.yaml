@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/sokube/simple-todo-list.git
-    targetRevision: HEAD
+    targetRevision: dev
     path: argocd/app
     directory:
       recurse: true
