@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/sokube/simple-todo-list-infra.git
-    targetRevision: dev
+    targetRevision: test
     path: app
     directory:
       recurse: true
