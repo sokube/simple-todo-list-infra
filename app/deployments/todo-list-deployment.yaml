@@ -2,19 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-todo-deployment
+  labels:
+    app: my-todo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: simple-todo
+      app: my-todo
   template:
     metadata:
       labels:
-        app: simple-todo
+        app: my-todo
     spec:
       containers:
-      - name: my-simple-todolist
-        image: harbor.fabrice.local/dev/simple-todo-list:3.1.4
+      - name: my-todo-container
+        image: harbor.fabrice.local/test/simple-todo-list:3.1.7
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
