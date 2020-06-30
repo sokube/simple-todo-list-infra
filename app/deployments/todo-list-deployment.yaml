@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-todo-container
-        image: harbor.fabrice.local/test/simple-todo-list:3.1.7
+        image: harbor.fabrice.local/test/simple-todo-list:3.1.8
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
