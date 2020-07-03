@@ -4,11 +4,12 @@ metadata:
   name: my-todo-ingress
   annotations:
     ingress.kubernetes.io/ssl-redirect: "false"
+    traefik.ingress.kubernetes.io/rewrite-target: /feature/
 spec:
   rules:
   - http:
       paths:
-      - path: /feature/
+      - path: /feature
         backend:
           serviceName: my-todo-service
           servicePort: 80
