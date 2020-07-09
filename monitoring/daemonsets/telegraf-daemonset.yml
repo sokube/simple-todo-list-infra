@@ -33,7 +33,7 @@ spec:
           value: "/rootfs/sys"
         envFrom:
         - secretRef:
-          name: telegraf
+            name: telegraf
         volumeMounts:
         - name: sys
           mountPath: /rootfs/sys
