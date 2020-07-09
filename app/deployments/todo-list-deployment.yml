@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-todo-deployment
+  labels:
+    app: my-todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-todo
+  template:
+    metadata:
+      labels:
+        app: my-todo
+    spec:
+      containers:
+      - name: my-todo-container
+        image: harbor.fabrice.local/dev/simple-todo-list:3.1.9
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          periodSeconds: 5
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
