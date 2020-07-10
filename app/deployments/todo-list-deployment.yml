@@ -5,7 +5,7 @@ metadata:
   labels:
     app: my-todo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: my-todo
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-todo-container
-        image: harbor.fabrice.local/dev/simple-todo-list:3.1.9
+        image: harbor.fabrice.local/test/simple-todo-list:3.1.8
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
