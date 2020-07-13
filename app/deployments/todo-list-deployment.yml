@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-todo-container
-        image: harbor.fabrice.local/dev/simple-todo-list:3.1.8
+        image: harbor.fabrice.local/dev/simple-todo-list:3.1.7
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
@@ -27,5 +27,3 @@ spec:
           periodSeconds: 5
           initialDelaySeconds: 5
           timeoutSeconds: 1
-      imagePullSecrets:
-      - name: regcred
