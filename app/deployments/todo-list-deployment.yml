@@ -14,6 +14,7 @@ spec:
       labels:
         app: my-todo
     spec:
+      serviceAccountName: simple-todo-sa
       containers:
       - name: my-todo-container
         image: harbor.fabrice.local/test/simple-todo-list:3.1.8
@@ -27,5 +28,3 @@ spec:
           periodSeconds: 5
           initialDelaySeconds: 5
           timeoutSeconds: 1
-      imagePullSecrets:
-      - name: regcred
