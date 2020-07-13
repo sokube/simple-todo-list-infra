@@ -14,7 +14,7 @@ spec:
       labels:
         app: my-todo
     spec:
-      serviceAccountName: simple-todo
+      serviceAccountName: simple-todo-sa
       containers:
       - name: my-todo-container
         image: harbor.fabrice.local/dev/simple-todo-list:3.1.7
