@@ -35,4 +35,4 @@ data:
     [[inputs.docker]]
       endpoint = "unix:///var/run/docker.sock"
     [[inputs.kubernetes]]
-      url = "http://1.1.1.1:10255"
+      url = "http://127.0.0.1:10255"
