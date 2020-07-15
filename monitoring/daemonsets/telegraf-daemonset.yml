@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: telegraf
+  name: telegraf-ds
   labels:
-    k8s-app: telegraf
+    app: telegraf
 spec:
   selector:
     matchLabels:
@@ -13,9 +13,10 @@ spec:
       labels:
         name: telegraf
     spec:
+      serviceAccountName: telegraf-sa
       containers:
       - name: telegraf
-        image: docker.io/telegraf:1.5.2
+        image: docker.io/telegraf:1.14.5-alpine
         resources:
           limits:
             memory: 500Mi
@@ -27,6 +28,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
+        - name: HOSTIP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         - name: "HOST_PROC"
           value: "/rootfs/proc"
         - name: "HOST_SYS"
@@ -53,4 +58,4 @@ spec:
           path: /proc
       - name: config
         configMap:
-          name: telegraf
+          name: telegraf-cm

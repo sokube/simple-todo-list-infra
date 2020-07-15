@@ -1,20 +1,21 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: telegraf
+  name: telegraf-cm
   labels:
-    k8s-app: telegraf
+    app: telegraf
 data:
   telegraf.conf: |+
     [global_tags]
       env = "$ENV"
       application = "$APPLICATION"
+
     [agent]
       hostname = "$HOSTNAME"
+
     [[outputs.influxdb]]
       urls = ["$MONITOR_HOST"] # required
       database = "metrics-$APPLICATION" # required
-
       timeout = "5s"
       username = "$MONITOR_USERNAME"
       password = "$MONITOR_PASSWORD"
@@ -32,7 +33,7 @@ data:
     [[inputs.processes]]
     [[inputs.swap]]
     [[inputs.system]]
-    [[inputs.docker]]
-      endpoint = "unix:///var/run/docker.sock"
     [[inputs.kubernetes]]
-      url = "http://1.1.1.1:10255"
+      url = "https://$HOSTIP:10250"
+      bearer_token = "/run/secrets/kubernetes.io/serviceaccount/token"
+      insecure_skip_verify = true
